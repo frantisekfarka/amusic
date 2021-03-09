@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Amazon Music
+GenericName=Music Player
+Comment=Google Chrome Amazon Music wrapper
+Exec=/home/frantisek/PROJECTS/amusic/amusic.py
+Icon=amusic
+Terminal=false
+Type=Application
