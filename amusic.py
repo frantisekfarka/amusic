@@ -21,9 +21,6 @@ except FileExistsError:
     # directory already exists
     pass
 
-
-
-
 # inhibiting
 # cookie = iface.Inhibit("amusic.py", "gnome-inhibit")
 # print("Cookie: %i" % cookie)
@@ -43,6 +40,10 @@ ewmh = ewmh.EWMH()
 wins = filter(lambda w: ewmh.getWmPid(w) == p.pid, ewmh.getClientList())
 win = list(wins)[0]
 
+# ewmh.setWmName(win, StringArray('B', 'AMusic'))
+win.set_wm_class('amusic', 'AMusic')
+ewmh.display.flush()
+
 cookieSet = False
 focused = False
 
@@ -58,16 +59,14 @@ while(p.poll() is None):
         print("Inhibiting with cookie: %i" % cookie)
         cookieSet = True
     elif cookieSet is True and focused is False:
-        print("UnInhibiting with cookie: %i" % cookie)
+        print('UnInhibiting with cookie: %i' % cookie)
         iface.UnInhibit(cookie)
         cookieSet = False
 
-
     time.sleep(1)
-
 
 print('Terminated')
 
 if cookieSet is True:
     iface.UnInhibit(cookie)
-print("UnInhibited with cookie: %i" % cookie)
+print('UnInhibited with cookie: %i' % cookie)
