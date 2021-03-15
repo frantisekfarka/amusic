@@ -1,6 +1,8 @@
-
-
 AMUSIC_ICO_256='https://d5fx445wy2wpk.cloudfront.net/icons/amznMusic_favicon.png'
+
+EXECUTABLES = wget convert google-chrome
+DEPS := $(foreach exec,$(EXECUTABLES),\
+        $(if $(shell which $(exec)),some string,$(error "No $(exec) in PATH")))
 
 
 ico: amusic.png
