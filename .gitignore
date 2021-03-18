@@ -53,3 +53,6 @@ Makefile
 # Vim
 *~
 *.sw?
+
+# Icons
+*.png
